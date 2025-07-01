@@ -62,12 +62,11 @@ def process_payroll_excel(file_path):
     
     # não esqueça burro 
     column_to_event = {
-        2: 565,
-        3: 205,
-        4: 225,
-        5: 208,
-        6: 209,
-        7: 479   }
+        2: 2,
+        3: 957,
+        4: 64 ,
+        5: 3,
+        6: 225  }
     
     # Process each row
     for idx in range(1, len(df)):  # Start from row 1 (skip header)
@@ -92,7 +91,7 @@ def process_payroll_excel(file_path):
                     insert_statements.append(
                     f"""INSERT INTO movevento 
                     (cd_empresa, mes, ano, cd_funcionario, cd_evento, referencia, transferido, tipo_processamento, origem_digitacao)
-                    VALUES (557, 6, 2025, {matricula}, {event_code}, {cleaned_value}, '', 2, 'M')
+                    VALUES (279, 6, 2025, {matricula}, {event_code}, {cleaned_value}, '', 2, 'M')
                     ON DUPLICATE KEY UPDATE 
                         referencia = {cleaned_value},
                         transferido = '',
@@ -103,7 +102,7 @@ def process_payroll_excel(file_path):
     return insert_statements
 
 # Usage
-file_path = "C:\\Users\\Usuario\\Desktop\\projetos\\app folha\\Nova Planilha DP.xlsx"
+file_path = "C:\\Users\\Micro\\Documents\\GitHub\\intelig-ncia-de-dados\\Nova Planilha DP.xlsx"
 insert_statements = process_payroll_excel(file_path)
 
 # Print the INSERTs
