@@ -63,7 +63,15 @@ def process_payroll_excel(file_path):
     # não esqueça burro 
     column_to_event = {
         2: 395,
-        3: 218
+        3: 218,
+        4:
+        5:
+        6:
+        7:
+        8:
+        9:
+        10:
+        11:
          }
     
     # Process each row
@@ -89,7 +97,7 @@ def process_payroll_excel(file_path):
                     insert_statements.append(
                     f"""INSERT INTO movevento 
                     (cd_empresa, mes, ano, cd_funcionario, cd_evento, referencia, transferido, tipo_processamento, origem_digitacao)
-                    VALUES (2, 6, 2025, {matricula}, {event_code}, {cleaned_value}, '', 2, 'M')
+                    VALUES (438, 6, 2025, {matricula}, {event_code}, {cleaned_value}, '', 2, 'M')
                     ON DUPLICATE KEY UPDATE 
                         referencia = {cleaned_value},
                         transferido = '',
